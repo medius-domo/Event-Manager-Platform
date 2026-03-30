@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { LogIn } from 'lucide-react';
+import { LogIn, AlertCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './LanguageSwitcher';
+import { supabase } from '../lib/supabase';
 
 export default function LoginPage() {
   const { t } = useTranslation();
@@ -11,7 +12,22 @@ export default function LoginPage() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [connectionError, setConnectionError] = useState(false);
   const { signIn, signUp } = useAuth();
+
+  useEffect(() => {
+    const checkConnection = async () => {
+      try {
+        const { error } = await supabase.from('events').select('count').limit(1);
+        if (error && error.message.includes('Failed to fetch')) {
+          setConnectionError(true);
+        }
+      } catch {
+        setConnectionError(true);
+      }
+    };
+    checkConnection();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,6 +52,13 @@ export default function LoginPage() {
       <div className="absolute top-4 right-4">
         <LanguageSwitcher />
       </div>
+
+      {connectionError && (
+        <div className="absolute top-4 left-4 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg flex items-center gap-2 max-w-md">
+          <AlertCircle className="w-5 h-5" />
+          <span className="text-sm">Connection error: Check environment variables</span>
+        </div>
+      )}
 
       <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
         <div className="flex items-center justify-center mb-8">
