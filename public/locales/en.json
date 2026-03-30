@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "home": "Home",
+    "events": "Events",
+    "register": "Register",
+    "dashboard": "Dashboard",
+    "signOut": "Sign Out"
+  },
+  "auth": {
+    "adminLogin": "Admin Login",
+    "createAdminAccount": "Create Admin Account",
+    "signInToManage": "Sign in to manage your events",
+    "signUpToManage": "Sign up to manage events",
+    "emailAddress": "Email Address",
+    "password": "Password",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "processing": "Processing...",
+    "alreadyHaveAccount": "Already have an account? Sign in",
+    "needAccount": "Need an account? Sign up"
+  },
+  "dashboard": {
+    "eventManager": "Event Manager",
+    "yourEvents": "Your Events",
+    "createAndManage": "Create and manage your event registrations",
+    "createEvent": "Create Event",
+    "noEventsYet": "No events yet",
+    "getStarted": "Get started by creating your first event",
+    "active": "active",
+    "closed": "closed",
+    "registrations": "Registrations",
+    "copyLink": "Copy registration link",
+    "closeEvent": "Close Event",
+    "reopenEvent": "Reopen Event"
+  },
+  "event": {
+    "title": "Event Title",
+    "description": "Description",
+    "eventDate": "Event Date",
+    "location": "Location",
+    "status": "Status",
+    "createNewEvent": "Create New Event",
+    "creating": "Creating...",
+    "cancel": "Cancel",
+    "close": "Close"
+  },
+  "registration": {
+    "fullName": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "submit": "Complete Registration",
+    "submitting": "Registering...",
+    "registerForEvent": "Register for this Event",
+    "registrationSuccessful": "Registration Successful!",
+    "thankYou": "Thank you for registering for {{eventTitle}}. We look forward to seeing you there!",
+    "registerAnother": "Register Another Person",
+    "eventNotFound": "Event Not Found",
+    "invalidLink": "This event link may be invalid or the event may have been removed.",
+    "registrationClosed": "Registration for this event is now closed.",
+    "loadingEvent": "Loading event..."
+  },
+  "details": {
+    "registrations": "Registrations",
+    "exportCSV": "Export CSV",
+    "noRegistrations": "No registrations yet",
+    "shareLink": "Share the event link to start receiving registrations",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "registrationDate": "Registration Date"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "linkCopied": "Event link copied to clipboard!"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "home": "Nyumbani",
+    "events": "Matukio",
+    "register": "Jisajili",
+    "dashboard": "Dashibodi",
+    "signOut": "Toka"
+  },
+  "auth": {
+    "adminLogin": "Ingia kwa Msimamizi",
+    "createAdminAccount": "Fungua Akaunti ya Msimamizi",
+    "signInToManage": "Ingia kusimamia matukio yako",
+    "signUpToManage": "Jisajili kusimamia matukio",
+    "emailAddress": "Barua Pepe",
+    "password": "Neno la Siri",
+    "signIn": "Ingia",
+    "signUp": "Jisajili",
+    "processing": "Inachakata...",
+    "alreadyHaveAccount": "Tayari una akaunti? Ingia",
+    "needAccount": "Unahitaji akaunti? Jisajili"
+  },
+  "dashboard": {
+    "eventManager": "Msimamizi wa Matukio",
+    "yourEvents": "Matukio Yako",
+    "createAndManage": "Unda na simamia usajili wa matukio yako",
+    "createEvent": "Unda Tukio",
+    "noEventsYet": "Hakuna matukio bado",
+    "getStarted": "Anza kwa kuunda tukio lako la kwanza",
+    "active": "inaendelea",
+    "closed": "imefungwa",
+    "registrations": "Usajili",
+    "copyLink": "Nakili kiungo cha usajili",
+    "closeEvent": "Funga Tukio",
+    "reopenEvent": "Fungua Tena Tukio"
+  },
+  "event": {
+    "title": "Kichwa cha Tukio",
+    "description": "Maelezo",
+    "eventDate": "Tarehe ya Tukio",
+    "location": "Mahali",
+    "status": "Hali",
+    "createNewEvent": "Unda Tukio Jipya",
+    "creating": "Inaunda...",
+    "cancel": "Ghairi",
+    "close": "Funga"
+  },
+  "registration": {
+    "fullName": "Jina Kamili",
+    "email": "Barua Pepe",
+    "phone": "Namba ya Simu",
+    "submit": "Kamilisha Usajili",
+    "submitting": "Inasajili...",
+    "registerForEvent": "Jisajili kwa Tukio Hili",
+    "registrationSuccessful": "Usajili Umefanikiwa!",
+    "thankYou": "Asante kwa kusajili kwa {{eventTitle}}. Tunatazamia kukuona huko!",
+    "registerAnother": "Sajili Mtu Mwingine",
+    "eventNotFound": "Tukio Halipatikani",
+    "invalidLink": "Kiungo hiki cha tukio kinaweza kuwa batili au tukio kimeondolewa.",
+    "registrationClosed": "Usajili wa tukio hili sasa umefungwa.",
+    "loadingEvent": "Inapakia tukio..."
+  },
+  "details": {
+    "registrations": "Usajili",
+    "exportCSV": "Hamisha CSV",
+    "noRegistrations": "Hakuna usajili bado",
+    "shareLink": "Shiriki kiungo cha tukio kuanza kupokea usajili",
+    "name": "Jina",
+    "email": "Barua Pepe",
+    "phone": "Simu",
+    "registrationDate": "Tarehe ya Usajili"
+  },
+  "common": {
+    "loading": "Inapakia...",
+    "error": "Hitilafu imetokea",
+    "success": "Imefanikiwa",
+    "linkCopied": "Kiungo cha tukio kimenakiliwa kwenye ubao wa kunakili!"
+  }
+}
