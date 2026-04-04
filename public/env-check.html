@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environment Check</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .status {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .success { color: #059669; }
+        .error { color: #dc2626; }
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Environment Variables Check</h1>
+
+    <div class="status">
+        <h3>Instructions:</h3>
+        <p>In Vercel, make sure you have these environment variables set:</p>
+        <ul>
+            <li><code>VITE_SUPABASE_URL</code> - Your Supabase project URL</li>
+            <li><code>VITE_SUPABASE_ANON_KEY</code> - Your Supabase anonymous key</li>
+        </ul>
+        <p><strong>Important:</strong> After adding or changing environment variables in Vercel, you MUST redeploy your project!</p>
+    </div>
+
+    <div class="status">
+        <h3>Build-time Check:</h3>
+        <p>This page was built and deployed. If you can see this, the deployment succeeded.</p>
+    </div>
+
+    <div class="status">
+        <h3>Next Steps:</h3>
+        <ol>
+            <li>Go to your Vercel project settings</li>
+            <li>Navigate to Environment Variables</li>
+            <li>Verify both <code>VITE_SUPABASE_URL</code> and <code>VITE_SUPABASE_ANON_KEY</code> exist</li>
+            <li>Redeploy the project from the Deployments tab</li>
+            <li>Check the browser console for error messages</li>
+        </ol>
+    </div>
+
+    <div class="status">
+        <h3>Common Issues:</h3>
+        <ul>
+            <li>Environment variables must start with <code>VITE_</code> to be accessible in the frontend</li>
+            <li>Changes to environment variables require a new deployment</li>
+            <li>Make sure there are no spaces before/after the values</li>
+            <li>The Supabase URL should start with <code>https://</code></li>
+        </ul>
+    </div>
+</body>
+</html>

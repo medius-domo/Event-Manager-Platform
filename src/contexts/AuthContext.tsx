@@ -17,23 +17,52 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    supabase.auth.getSession()
-      .then(({ data: { session } }) => {
-        setUser(session?.user ?? null);
+    let mounted = true;
+
+    const loadingTimeout = setTimeout(() => {
+      if (mounted && loading) {
+        console.warn('Auth loading timeout - forcing completion');
         setLoading(false);
-      })
-      .catch((error) => {
-        console.error('Error fetching session:', error);
-        setLoading(false);
-      });
+      }
+    }, 5000);
+
+    const initAuth = async () => {
+      try {
+        const { data: { session }, error } = await supabase.auth.getSession();
+
+        if (error) {
+          console.error('Auth session error:', error);
+        }
+
+        if (mounted) {
+          setUser(session?.user ?? null);
+          setLoading(false);
+          clearTimeout(loadingTimeout);
+        }
+      } catch (error) {
+        console.error('Error initializing auth:', error);
+        if (mounted) {
+          setLoading(false);
+          clearTimeout(loadingTimeout);
+        }
+      }
+    };
+
+    initAuth();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       (async () => {
-        setUser(session?.user ?? null);
+        if (mounted) {
+          setUser(session?.user ?? null);
+        }
       })();
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      mounted = false;
+      clearTimeout(loadingTimeout);
+      subscription.unsubscribe();
+    };
   }, []);
 
   const signIn = async (email: string, password: string) => {

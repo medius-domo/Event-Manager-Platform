@@ -114,11 +114,57 @@ This ensures proper routing for your single-page application.
 - [ ] Supabase project is active and accessible
 - [ ] Translation files load successfully (check Network tab for `/locales/en.json`)
 
+## Debugging Page
+
+Visit `/env-check.html` on your deployed site (e.g., `https://your-app.vercel.app/env-check.html`) for deployment instructions and checklist.
+
+## What the App Does on Load
+
+The app performs these steps when loading:
+
+1. **Initialize i18n** - Loads translation files from `/locales/` folder
+2. **Initialize Supabase** - Creates connection using environment variables
+3. **Check Authentication** - Attempts to get current session (should complete within 5 seconds)
+4. **Show Login Page** - If no user is logged in, shows the login screen
+
+If you see a blank page:
+- The app might be stuck at step 1, 2, or 3
+- Check browser console for specific error messages
+- The loading timeout (5 seconds) will force the app to continue even if auth is slow
+
+## Console Messages to Look For
+
+Open browser console (F12 or right-click → Inspect → Console) and look for:
+
+**Good Messages (App is working):**
+- No errors
+- You should see the login page after a few seconds
+
+**Bad Messages (Problems):**
+```
+Supabase configuration missing!
+VITE_SUPABASE_URL: MISSING
+VITE_SUPABASE_ANON_KEY: MISSING
+```
+→ **Solution**: Add environment variables in Vercel and redeploy
+
+```
+Auth loading timeout - forcing completion
+```
+→ **Solution**: Check Supabase project is accessible, verify URL and key are correct
+
+```
+Failed to fetch
+```
+→ **Solution**: Check network connection, verify Supabase URL is correct
+
 ## Still Having Issues?
 
 If the page is still blank after checking all the above:
 
-1. Share the error messages from the browser console
+1. **Open browser console** (F12) and copy ALL error messages
 2. Check if the same issue occurs when testing locally with `npm run preview`
-3. Verify that your Supabase project has the correct tables and RLS policies set up
-4. Make sure your Supabase project URL is accessible from the internet
+3. Try visiting `/env-check.html` on your deployed site
+4. Clear browser cache and cookies, then try again
+5. Verify that your Supabase project has the correct tables and RLS policies set up
+6. Make sure your Supabase project URL is accessible from the internet
