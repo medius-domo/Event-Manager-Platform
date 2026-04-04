@@ -2,10 +2,11 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
+import { loadTranslations } from './i18n/config';
 
 async function init() {
   try {
-    await import('./i18n/config');
+    await loadTranslations();
 
     createRoot(document.getElementById('root')!).render(
       <StrictMode>
