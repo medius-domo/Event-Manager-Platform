@@ -252,7 +252,7 @@ export default function EventRegistrationPage({ slug }: EventRegistrationPagePro
 
             {customFields.length > 0 && (
               <div className="border-t border-gray-200 pt-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Additional Information</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4"></h3>
                 <div className="space-y-4">
                   {customFields.map((field) => (
                     <div key={field.id}>
