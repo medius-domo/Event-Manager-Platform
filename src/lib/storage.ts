@@ -1,16 +1,16 @@
 import { supabase } from './supabase';
 
 const BUCKET_NAME = 'event-posters';
-const MAX_FILE_SIZE = 2 * 1024 * 1024;
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 
 export async function uploadEventPoster(file: File, eventSlug: string): Promise<string> {
   if (file.size > MAX_FILE_SIZE) {
-    throw new Error('File size must be less than 2MB');
+    throw new Error('File size must be less than 5MB');
   }
 
-  const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+  const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
   if (!allowedTypes.includes(file.type)) {
-    throw new Error('Only JPG and PNG images are allowed');
+    throw new Error('Only JPG, PNG, and WebP images are allowed');
   }
 
   const fileExt = file.name.split('.').pop();
