@@ -22,8 +22,15 @@ export default function AdminDashboard() {
   }, [user]);
 
   const loadEvents = async () => {
-    if (!user) return;
     try {
+      const { data: { user: currentUser }, error: authError } = await supabase.auth.getUser();
+
+      if (authError || !currentUser) {
+        console.error('Not authenticated:', authError);
+        setLoading(false);
+        return;
+      }
+
       const { data, error } = await supabase
         .from('events')
         .select('*')

@@ -28,14 +28,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const initAuth = async () => {
       try {
-        const { data: { session }, error } = await supabase.auth.getSession();
+        const { data: { user }, error } = await supabase.auth.getUser();
 
         if (error) {
-          console.error('Auth session error:', error);
+          console.error('Auth user error:', error);
         }
 
         if (mounted) {
-          setUser(session?.user ?? null);
+          setUser(user ?? null);
           setLoading(false);
           clearTimeout(loadingTimeout);
         }
