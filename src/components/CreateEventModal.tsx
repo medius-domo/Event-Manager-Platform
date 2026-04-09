@@ -84,7 +84,7 @@ export default function CreateEventModal({ onClose, onSuccess }: CreateEventModa
           ...formData,
           slug,
           status: 'active',
-          created_by: user.id,
+          user_id: user.id,
           poster_url: posterUrl,
         })
         .select()

@@ -27,7 +27,6 @@ export default function AdminDashboard() {
       const { data, error } = await supabase
         .from('events')
         .select('*')
-        .eq('created_by', user.id)
         .order('created_at', { ascending: false });
 
       if (error) throw error;
@@ -60,8 +59,7 @@ export default function AdminDashboard() {
       const { error } = await supabase
         .from('events')
         .update({ status: newStatus })
-        .eq('id', event.id)
-        .eq('created_by', user.id);
+        .eq('id', event.id);
 
       if (error) throw error;
       loadEvents();

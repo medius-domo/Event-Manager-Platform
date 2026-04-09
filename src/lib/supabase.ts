@@ -24,7 +24,7 @@ export interface Event {
   location: string;
   status: 'active' | 'closed';
   slug: string;
-  created_by: string;
+  user_id: string;
   created_at: string;
   poster_url?: string;
 }
