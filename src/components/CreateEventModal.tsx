@@ -62,6 +62,12 @@ export default function CreateEventModal({ onClose, onSuccess }: CreateEventModa
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+
+    if (!user) {
+      setError('You must be logged in to create an event.');
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -78,7 +84,7 @@ export default function CreateEventModal({ onClose, onSuccess }: CreateEventModa
           ...formData,
           slug,
           status: 'active',
-          created_by: user?.id,
+          created_by: user.id,
           poster_url: posterUrl,
         })
         .select()

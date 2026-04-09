@@ -1,39 +1,32 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-const savedLanguage = typeof window !== 'undefined'
-  ? localStorage.getItem('language') || 'en'
-  : 'en';
+const savedLanguage =
+  typeof window !== 'undefined' ? localStorage.getItem('language') || 'en' : 'en';
+
+i18n.use(initReactI18next).init({
+  resources: {
+    en: { translation: {} },
+    sw: { translation: {} },
+  },
+  lng: savedLanguage,
+  fallbackLng: 'en',
+  interpolation: {
+    escapeValue: false,
+  },
+});
 
 const loadTranslations = async () => {
   try {
-    const enTranslations = await fetch('/locales/en.json').then((res) => res.json());
-    const swTranslations = await fetch('/locales/sw.json').then((res) => res.json());
+    const [enTranslations, swTranslations] = await Promise.all([
+      fetch('/locales/en.json').then((res) => res.json()),
+      fetch('/locales/sw.json').then((res) => res.json()),
+    ]);
 
-    await i18n.use(initReactI18next).init({
-      resources: {
-        en: { translation: enTranslations },
-        sw: { translation: swTranslations },
-      },
-      lng: savedLanguage,
-      fallbackLng: 'en',
-      interpolation: {
-        escapeValue: false,
-      },
-    });
+    i18n.addResourceBundle('en', 'translation', enTranslations, true, true);
+    i18n.addResourceBundle('sw', 'translation', swTranslations, true, true);
   } catch (error) {
     console.error('Failed to load translations:', error);
-    await i18n.use(initReactI18next).init({
-      resources: {
-        en: { translation: {} },
-        sw: { translation: {} },
-      },
-      lng: 'en',
-      fallbackLng: 'en',
-      interpolation: {
-        escapeValue: false,
-      },
-    });
   }
 };
 

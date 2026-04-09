@@ -16,14 +16,18 @@ export default function AdminDashboard() {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
 
   useEffect(() => {
-    loadEvents();
-  }, []);
+    if (user) {
+      loadEvents();
+    }
+  }, [user]);
 
   const loadEvents = async () => {
+    if (!user) return;
     try {
       const { data, error } = await supabase
         .from('events')
         .select('*')
+        .eq('created_by', user.id)
         .order('created_at', { ascending: false });
 
       if (error) throw error;
@@ -50,12 +54,14 @@ export default function AdminDashboard() {
   };
 
   const toggleEventStatus = async (event: Event) => {
+    if (!user) return;
     try {
       const newStatus = event.status === 'active' ? 'closed' : 'active';
       const { error } = await supabase
         .from('events')
         .update({ status: newStatus })
-        .eq('id', event.id);
+        .eq('id', event.id)
+        .eq('created_by', user.id);
 
       if (error) throw error;
       loadEvents();
